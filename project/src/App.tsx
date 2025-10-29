@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -13,6 +13,11 @@ import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+
+  // Always scroll to top when switching pages
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
 
   return (
     <LanguageProvider>
@@ -40,7 +45,7 @@ function App() {
         {currentPage === 'services' && <ServicesPage/>}
         {currentPage === 'menu' && <MenuPage />}
   {currentPage === 'gallery' && <GalleryPage />}
-        <Footer />
+        <Footer setCurrentPage={setCurrentPage} />
       </div>
     </LanguageProvider>
   );

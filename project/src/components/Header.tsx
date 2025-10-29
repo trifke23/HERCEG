@@ -36,7 +36,7 @@ export default function Header({ setCurrentPage }: HeaderProps) {
       setTimeout(() => {
         const element = document.getElementById(section);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 100);
     }
@@ -52,7 +52,7 @@ export default function Header({ setCurrentPage }: HeaderProps) {
         boxShadow: '0 2px 16px 0 rgba(192,154,108,0.10)',
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative">
         {/* GRID LAYOUT */}
         <div className="grid grid-cols-3 items-center py-2">
           {/* Left Navigation */}
@@ -85,7 +85,8 @@ export default function Header({ setCurrentPage }: HeaderProps) {
           </div>
 
           {/* Right Navigation & Controls */}
-          <div className="flex justify-start items-center space-x-6">
+          {/* Absolutely position on mobile with a slight inset from the edge */}
+          <div className="flex items-center space-x-2 lg:space-x-6 absolute right-2 top-1/2 -translate-y-1/2 lg:static lg:transform-none">
             <nav className="hidden lg:flex flex-row space-x-6">
               <button
                 onClick={() => handleNavigation('home', 'about')}
@@ -133,7 +134,7 @@ export default function Header({ setCurrentPage }: HeaderProps) {
                   key={key}
                   onClick={() =>
                     key === 'gallery'
-                      ? setCurrentPage('gallery')
+                      ? handleNavigation('gallery')
                       : key === 'about'
                         ? handleNavigation('home', 'about')
                         : key === 'contact'
