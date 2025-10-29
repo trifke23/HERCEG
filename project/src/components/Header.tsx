@@ -17,26 +17,50 @@ export default function Header({ setCurrentPage }: HeaderProps) {
   const lastScrollY = React.useRef(0);
 
   React.useEffect(() => {
+    const THRESHOLD = 14; // px of movement before toggling
+    const ticking = { current: false } as React.MutableRefObject<boolean>;
+    ticking.current = false;
+
     const handleScroll = () => {
       const currentY = window.scrollY;
-      const delta = currentY - lastScrollY.current;
+      const run = () => {
+        const delta = currentY - lastScrollY.current;
 
-      // Always show at the very top
-      if (currentY <= 0) {
-        setShowHeader(true);
-      } else if (delta > 0) {
-        // Scrolling down
-        setShowHeader(false);
-      } else if (delta < 0) {
-        // Scrolling up
-        setShowHeader(true);
+        // Always show at the very top
+        if (currentY <= 0) {
+          setShowHeader(true);
+          lastScrollY.current = 0;
+          ticking.current = false;
+          return;
+        }
+
+        // Ignore tiny movements to reduce flicker
+        if (Math.abs(delta) <= THRESHOLD) {
+          ticking.current = false;
+          return;
+        }
+
+        if (delta > 0) {
+          // Scrolling down
+          setShowHeader(false);
+        } else {
+          // Scrolling up
+          setShowHeader(true);
+        }
+        lastScrollY.current = currentY;
+        ticking.current = false;
+      };
+
+      if (!ticking.current) {
+        ticking.current = true;
+        window.requestAnimationFrame(run);
       }
-
-      lastScrollY.current = currentY;
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     // Ensure visible on mount/top
     setShowHeader(true);
+    lastScrollY.current = window.scrollY || 0;
     return () => window.removeEventListener('scroll', handleScroll as any);
   }, []);
 
