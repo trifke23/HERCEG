@@ -13,10 +13,53 @@ export default function Contact() {
   });
   const [dateType, setDateType] = useState<'text' | 'date'>('text');
   const [timeType, setTimeType] = useState<'text' | 'time'>('text');
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState<null | { ok: boolean; msg: string }>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    if (submitting) return;
+    setSubmitting(true);
+    setStatus(null);
+
+    try {
+      const form = e.currentTarget;
+      const fd = new FormData(form);
+      const data: Record<string, any> = {
+        access_key: '5190393c-f1d9-4e27-a004-1c0bb13885af',
+        subject: 'Nova poruka sa sajta – Herceg Ketering',
+      };
+      fd.forEach((value, key) => {
+        data[key] = value;
+      });
+      // Helpful aliases for inbox readability
+      if (data.fullName) data.from_name = data.fullName;
+      if (data.email) data.replyto = data.email;
+
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const json = await res.json();
+      if (json.success) {
+        setStatus({ ok: true, msg: 'Порука је успешно послата. Хвала!' });
+        form.reset();
+        // Reset placeholders for date/time back to text if empty
+        setDateType('text');
+        setTimeType('text');
+      } else {
+        setStatus({ ok: false, msg: 'Слање није успело. Покушајте поново.' });
+      }
+    } catch (err) {
+      setStatus({ ok: false, msg: 'Грешка при слању. Покушајте поново.' });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -45,6 +88,8 @@ export default function Contact() {
             style={{ minHeight: '480px', height: 'auto' }}
           >
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Honeypot (anti-spam) */}
+              <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
               {/* Име и презиме - пуна ширина */}
               <input
                 type="text"
@@ -140,10 +185,17 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="col-span-2 w-full bg-gradient-to-r from-tb-accent to-tb-accent-dark hover:from-tb-accent-dark hover:to-tb-accent text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
+                disabled={submitting}
+                className={`col-span-2 w-full bg-gradient-to-r from-tb-accent to-tb-accent-dark hover:from-tb-accent-dark hover:to-tb-accent text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl ${submitting ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
-                {t('sendButton')}
+                {submitting ? 'Слање…' : t('sendButton')}
               </button>
+
+              {status && (
+                <div className={`col-span-2 text-center mt-1 ${status.ok ? 'text-green-700' : 'text-red-700'}`}>
+                  {status.msg}
+                </div>
+              )}
             </form>
           </div>
 
@@ -215,4 +267,3 @@ export default function Contact() {
     </section>
   );
 }
-
