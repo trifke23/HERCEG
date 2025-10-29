@@ -18,15 +18,26 @@ export default function Header({ setCurrentPage }: HeaderProps) {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY.current) {
+      const currentY = window.scrollY;
+      const delta = currentY - lastScrollY.current;
+
+      // Always show at the very top
+      if (currentY <= 0) {
+        setShowHeader(true);
+      } else if (delta > 0) {
+        // Scrolling down
         setShowHeader(false);
-      } else {
+      } else if (delta < 0) {
+        // Scrolling up
         setShowHeader(true);
       }
-      lastScrollY.current = window.scrollY;
+
+      lastScrollY.current = currentY;
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Ensure visible on mount/top
+    setShowHeader(true);
+    return () => window.removeEventListener('scroll', handleScroll as any);
   }, []);
 
   const handleNavigation = (page: string, section?: string) => {
