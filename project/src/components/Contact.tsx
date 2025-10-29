@@ -45,108 +45,106 @@ export default function Contact() {
             style={{ minHeight: '480px', height: 'auto' }}
           >
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Ime i prezime - puna širina */}
-              <input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Име и презиме"
-                className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
-                required
-              />
+  {/* Ime i prezime - puna �irina */}
+  <input
+    type="text"
+    name="fullName"
+    value={formData.fullName}
+    onChange={handleChange}
+    placeholder="??? ? ???????"
+    className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
+    required
+  />
 
-              {/* Telefon i E‑pošta - jedan ispod drugog, puna širina */}
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Телефон"
-                className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Е‑пошта"
-                className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
-                required
-              />
+  {/* Telefon i E-po�ta - jedan ispod drugog, puna �irina */}
+  <input
+    type="tel"
+    name="phone"
+    value={formData.phone}
+    onChange={handleChange}
+    placeholder="???????"
+    className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
+    required
+  />
+  <input
+    type="email"
+    name="email"
+    value={formData.email}
+    onChange={handleChange}
+    placeholder="?-?????"
+    className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
+    required
+  />
 
-              <select
-                name="numPeople"
-                onChange={handleChange}
-                className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
-                required
-              >
-                <option value="">Број особа</option>
-                <option value="1-10">1-10</option>
-                <option value="11-30">11-30</option>
-                <option value="31-50">31-50</option>
-                <option value="51+">51+</option>
-              </select>
+  <select
+    name="numPeople"
+    onChange={handleChange}
+    className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
+    required
+  >
+    <option value="">???? ?????</option>
+    <option value="1-10">1-10</option>
+    <option value="11-30">11-30</option>
+    <option value="31-50">31-50</option>
+    <option value="51+">51+</option>
+  </select>
 
-              <select
-                name="eventType"
-                value={formData.eventType}
-                onChange={handleChange}
-                className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
-                required
-              >
-                <option value="">Врста догађаја</option>
-                <option value="Рођендан">Рођендан</option>
-                <option value="Пословни догађај">Пословни догађај</option>
-                <option value="Свечаност">Свечаност</option>
-                <option value="Породична прослава">Породична прослава</option>
-                <option value="Wine & Cheese">Wine & Cheese</option>
-                <option value="Остало">Остало</option>
-              </select>
+  <select
+    name="eventType"
+    value={formData.eventType}
+    onChange={handleChange}
+    className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
+    required
+  >
+    <option value="">????? ????????</option>
+    <option value="????????">????????</option>
+    <option value="???????? ???????">???????? ???????</option>
+    <option value="?????????">?????????</option>
+    <option value="????????? ????????">????????? ????????</option>
+    <option value="Wine & Cheese">Wine & Cheese</option>
+    <option value="??????">??????</option>
+  </select>
 
-              <input
-                type={dateType}
-                name="date"
-                onFocus={() => setDateType('date')}
-                onBlur={(e) => {
-                  if (!e.currentTarget.value) setDateType('text');
-                }}
-                onChange={handleChange}
-                placeholder="Датум"
-                className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
-                required
-              />
-              <input
-                type={timeType}
-                name="time"
-                onFocus={() => setTimeType('time')}
-                onBlur={(e) => {
-                  if (!e.currentTarget.value) setTimeType('text');
-                }}
-                onChange={handleChange}
-                placeholder="Време"
-                className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
-                required
-              />
+  <input
+    type={dateType}
+    name="date"
+    onFocus={() => setDateType('date')}
+    onBlur={(e) => { if (!e.currentTarget.value) setDateType('text'); }}
+    onChange={handleChange}
+    placeholder="?????"
+    className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
+    required
+  />
+  <input
+    type={timeType}
+    name="time"
+    onFocus={() => setTimeType('time')}
+    onBlur={(e) => { if (!e.currentTarget.value) setTimeType('text'); }}
+    onChange={handleChange}
+    placeholder="?????"
+    lang="sr-RS"
+    step="60"
+    className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
+    required
+  />
 
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Напишите поруку"
-                rows={4}
-                className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300 resize-none"
-                required
-              />
+  <textarea
+    name="message"
+    value={formData.message}
+    onChange={handleChange}
+    placeholder="???????? ??????"
+    rows={4}
+    className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300 resize-none"
+    required
+  />
 
-              <button
-                type="submit"
-                className="col-span-2 w-full bg-gradient-to-r from-tb-accent to-tb-accent-dark hover:from-tb-accent-dark hover:to-tb-accent text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
-              >
-                {t('sendButton')}
-              </button>
-            </form>
+  <button
+    type="submit"
+    className="col-span-2 w-full bg-gradient-to-r from-tb-accent to-tb-accent-dark hover:from-tb-accent-dark hover:to-tb-accent text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
+  >
+    {t('sendButton')}
+  </button>
+</form>
           </div>
 
           {/* Contact Info & Map */}
@@ -217,5 +215,9 @@ export default function Contact() {
     </section>
   );
 }
+
+
+
+
 
 
