@@ -4,6 +4,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Contact() {
   const { t } = useLanguage();
+  const [dateType, setDateType] = useState<'text' | 'date'>('text');
+  const [timeType, setTimeType] = useState<'text' | 'time'>('text');
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -104,20 +106,28 @@ export default function Contact() {
               </select>
 
               <input
-                type="date"
+                type={dateType}
                 name="date"
+                onFocus={() => setDateType('date')}
+                onBlur={(e) => {
+                  if (!e.currentTarget.value) setDateType('text');
+                }}
                 onChange={handleChange}
+                placeholder="Датум"
                 className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
                 required
-                placeholder="Датум"
               />
               <input
-                type="time"
+                type={timeType}
                 name="time"
+                onFocus={() => setTimeType('time')}
+                onBlur={(e) => {
+                  if (!e.currentTarget.value) setTimeType('text');
+                }}
                 onChange={handleChange}
+                placeholder="Време"
                 className="col-span-2 px-4 py-3 border border-tb-accent/40 rounded-xl bg-tb-bg/40 focus:outline-none focus:ring-2 focus:ring-tb-accent focus:border-transparent transition-all duration-300"
                 required
-                placeholder="Време"
               />
 
               <textarea
