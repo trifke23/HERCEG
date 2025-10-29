@@ -54,9 +54,9 @@ export default function Header({ setCurrentPage }: HeaderProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative">
         {/* GRID LAYOUT */}
-        <div className="grid grid-cols-3 items-center py-2">
+        <div className="grid grid-cols-3 items-center py-1 md:py-2">
           {/* Left Navigation */}
-          <nav className="hidden lg:flex justify-end space-x-6">
+          <nav className="hidden lg:flex justify-end space-x-4 xl:space-x-6">
             {['home', 'services', 'menu', 'gallery'].map((key) => (
               <button
                 key={key}
@@ -65,7 +65,7 @@ export default function Header({ setCurrentPage }: HeaderProps) {
                     ? setCurrentPage('gallery')
                     : handleNavigation(key)
                 }
-                className="transition-all duration-200 font-semibold text-lg text-[#5a4a36] hover:underline hover:underline-offset-4 px-4 py-2 rounded-md bg-transparent focus:outline-none"
+                className="transition-all duration-200 font-semibold text-base xl:text-lg text-[#5a4a36] hover:underline hover:underline-offset-4 px-3 py-1.5 xl:px-4 xl:py-2 rounded-md bg-transparent focus:outline-none"
                 style={{ letterSpacing: '0.04em' }}
               >
                 {t(key)}
@@ -78,26 +78,26 @@ export default function Header({ setCurrentPage }: HeaderProps) {
             <img
               src={herceg_logo}
               alt="Herceg Ketering Logo"
-              className="h-36 w-36 object-contain drop-shadow-xl transition-transform duration-300 hover:scale-105 cursor-pointer"
-              style={{ minWidth: 120 }}
+              className="h-28 w-28 md:h-32 md:w-32 xl:h-36 xl:w-36 object-contain drop-shadow-xl transition-transform duration-300 hover:scale-105 cursor-pointer"
+              style={{ minWidth: 96 }}
               onClick={() => handleNavigation('home', 'home')}
             />
           </div>
 
           {/* Right Navigation & Controls */}
           {/* Absolutely position on mobile with a slight inset from the edge */}
-          <div className="flex items-center space-x-2 lg:space-x-6 absolute right-2 top-1/2 -translate-y-1/2 lg:static lg:transform-none">
-            <nav className="hidden lg:flex flex-row space-x-6">
+          <div className="flex items-center space-x-2 lg:space-x-5 xl:space-x-6 absolute right-2 top-1/2 -translate-y-1/2 lg:static lg:transform-none">
+            <nav className="hidden lg:flex flex-row space-x-4 xl:space-x-6">
               <button
                 onClick={() => handleNavigation('home', 'about')}
-                className="transition-all duration-200 font-semibold text-lg text-[#5a4a36] hover:underline hover:underline-offset-4 px-4 py-2 rounded-md bg-transparent focus:outline-none"
+                className="transition-all duration-200 font-semibold text-base xl:text-lg text-[#5a4a36] hover:underline hover:underline-offset-4 px-3 py-1.5 xl:px-4 xl:py-2 rounded-md bg-transparent focus:outline-none"
                 style={{ letterSpacing: '0.04em' }}
               >
                 {t('about')}
               </button>
               <button
                 onClick={() => handleNavigation('home', 'contact')}
-                className="transition-all duration-200 font-semibold text-lg text-[#5a4a36] hover:underline hover:underline-offset-4 px-4 py-2 rounded-md bg-transparent focus:outline-none"
+                className="transition-all duration-200 font-semibold text-base xl:text-lg text-[#5a4a36] hover:underline hover:underline-offset-4 px-3 py-1.5 xl:px-4 xl:py-2 rounded-md bg-transparent focus:outline-none"
                 style={{ letterSpacing: '0.04em' }}
               >
                 {t('contact')}
