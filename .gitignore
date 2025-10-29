@@ -1,0 +1,22 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vite/CRA build output (keep root docs for Pages)
+dist/
+project/dist/
+
+# Local env
+.env*
+
+# Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Generated Pages output at project level (we build to root /docs)
+project/docs/
