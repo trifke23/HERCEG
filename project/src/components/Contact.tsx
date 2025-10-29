@@ -26,7 +26,7 @@ export default function Contact() {
       const form = e.currentTarget;
       const fd = new FormData(form);
       const data: Record<string, any> = {
-        access_key: '5190393c-f1d9-4e27-a004-1c0bb13885af',
+        access_key: '3f11a0fb-1609-4e28-9bd7-9689363c0b7e',
         subject: 'Nova poruka sa sajta – Herceg Ketering',
       };
       fd.forEach((value, key) => {
