@@ -1,95 +1,162 @@
 
 import gl18 from '../assets/gl18.jpeg';
-import gl5 from '../assets/gl5.jpeg';
-import gl13 from '../assets/gl13.jpg';
-import gl9 from '../assets/gl9.jpg';
-import gl17 from '../assets/gl17.jpg';
+import gl31 from '../assets/gl31.jpg';
+import gl22 from '../assets/gl22.jpg';
+import gl24 from '../assets/gl24.jpg';
+import gl21 from '../assets/gl21.jpg';
+import gl23 from '../assets/gl23.jpg';
+import gl20 from '../assets/gl20.jpg';
 import gl19 from '../assets/gl19.jpeg';
+import gl28 from '../assets/gl28.jpg';
+import gl26 from '../assets/gl26.jpg';
 
 const sectionImages = [
 	gl18, // kiflice
-	gl5,   // rolati
-	gl5,   // pite
-	gl13,  // mini sendviči
-	gl9,   // tortilje
-	gl17,  // ostali slani program
+	gl31,   // rolati
+	gl22,   // pite
+	gl24,  // mini sendviči
+	gl21,   // tortilje
+	gl23,  // ciz casa
+	gl20,  // ostali slani program
 	gl19,  // slatki program
+	gl28,  // slavski program
+	gl26,  // ciz torta 
 ];
 
 const menuData = [
 	{
 		title: 'КИФЛИЦЕ',
 		items: [
-			{ name: 'Празне', price: '1000 RSD/kg' },
-			{ name: 'Шунка сир', price: '1200 RSD/kg' },
-			{ name: 'Кулен сир', price: '1300 RSD/kg' },
+			{ name: 'Празне', price: '1000 РСД/кг' },
+			{ name: 'Сир', price: '1100 РСД/кг' },
+			{ name: 'Шунка сир', price: '1200 РСД/кг' },
+			{ name: 'Кулен сир', price: '1300 РСД/кг' },
+			{ name: 'Са буткицом', price: '1400 РСД/кг' },
+			{ name: 'Са џемом', price: '1100 РСД/кг' },
 		],
 	},
 	{
 		title: 'РОЛАТИ',
 		items: [
-			{ name: 'Класични (жути)', price: '1500RSD/kg' },
-			{ name: 'Спанаћ (зелени)', price: '1500RSD/kg' },
-			{ name: 'Ајвар (црвени)', price: '1500RSD/kg' },
+			{ name: 'Класични (жути)', price: '1500 РСД/кг' },
+			{ name: 'Спанаћ (зелени)', price: '1500 РСД/кг' },
+			{ name: 'Ајвар (црвени)', price: '1500 РСД/кг' },
 		],
 	},
 	{
 		title: 'ПИТЕ',
 		items: [
-			{ name: 'Сир', price: '1300RSD/kg' },
-			{ name: 'Кромпир (посна или мрсна)', price: '1300RSD/kg' },
-			{ name: 'Месо', price: '1400RSD/kg' },
+			{ name: 'Сир', price: '1300 РСД/кг' },
+			{ name: 'Кромпир', price: '1300 РСД/кг' },
+			{ name: 'Месо', price: '1400 РСД/кг' },
+			{ name: 'Пиринач', price: '1300 РСД/кг' },
+			{ name: 'Печурке', price: '1400 РСД/кг' },
 		],
+		note: 'Могућност и са хељдиним корама (доплата 100 РСД/кг)'
 	},
 	{
 		title: 'МИНИ СЕНДВИЧИ',
 		items: [
-			{ name: 'Класик (шунка сир)', price: '1600 RSD/kg' },
-			{ name: 'Кулен сир', price: '1700 RSD/kg' },
-			{ name: 'Похована пилетина', price: '1900 RSD/kg' },
+			{ name: 'Класик (шунка сир)', price: '1600 РСД/кг' },
+			{ name: 'Кулен сир', price: '1700 РСД/кг' },
+			{ name: 'Похована пилетина', price: '1900 РСД/кг' },
+			{ name: 'Мини бургер', price: '1900 РСД/кг' },
 		],
 	},
 	{
 		title: 'ТОРТИЉЕ',
 		items: [
-			{ name: 'Руска', price: '1600RSD/kg' },
-			{ name: 'Пилећа', price: '1800 RSD/kg' },
+			{ name: 'Руска', price: '1600 РСД/кг' },
+			{ name: 'Класик (шунка, трапист, кукуруз)', price: '1600 РСД/кг' },
+			{ name: 'Пилећа', price: '1800 РСД/кг' },
+			{ name: 'Туна', price: '1800 РСД/кг' },
 		],
 	},
 	{
 		title: 'САЛАТЕ',
 		items: [
-			{ name: 'Руска салата', price: '1300RSD/kg' },
-			{ name: 'Мимоза', price: '1400 RSD/kg' },
-			{ name: 'Пилећа', price: '1500 RSD/kg' },
+			{ name: 'Руска', price: '1300 РСД/кг' },
+			{ name: 'Мимоза', price: '1400 РСД/кг' },
+			{ name: 'Пилећа', price: '1500 РСД/кг' },
+			{ name: 'Туна', price: '1500 РСД/кг' },
 		],
 	},
 	{
 		title: 'ОСТАЛИ СЛАНИ ПРОГРАМ',
 		items: [
-			{ name: 'Царска пита', price: '1200 RSD/kg' },
-			{ name: 'Пројице', price: '1100 RSD/kg' },
-			{ name: 'Мини пице', price: '1300 RSD/kg' },
-			{ name: 'Пица ролат', price: '1400 RSD/kg' },
-			{ name: 'Слана торта', price: '2300 RSD/kg' },
-			{ name: 'Такитоси', price: '2300 RSD/kg' },
-			{ name: 'Канапеи', price: '1800RSD/kg' },
+			{ name: 'Царска пита', price: '1200 РСД/кг' },
+			{ name: 'Пројице', price: '1100 РСД/кг' },
+			{ name: 'Мини пице', price: '1300 РСД/кг' },
+			{ name: 'Пица ролат', price: '1400 РСД/кг' },
+			{ name: 'Слана торта', price: '2300 РСД/кг' },
+			{ name: 'Такитоси', price: '2300 РСД/кг' },
+			{ name: 'Канапеи', price: '1800 РСД/кг' },
+		],
+	},
+	{
+		title: 'СЛАВСКИ ПРОГРАМ',
+		items: [
+			{ name: 'Славски колач (око 2кг)', price: '1800 РСД/ком' },
+			{ name: 'Славско жито / кољиво (0,5кг-1кг)', price: '500 РСД/ком' },
+			{ name: 'Сарма (минимум 10ком)', price: '150 РСД/ком' },
+			{ name: 'Пребранац', price: '1200 РСД/кг' },
+			{ name: 'Овал мезе - основни (1,5 кг)', price: '2500 РСД/ком' },
+			{ name: 'Овал мезе - премијум', price: '3500 РСД/ком' },
+			{ name: 'Овал мезе - састав по вашој жељи', price: 'на упит' },
+		],
+		
+	},
+	{
+		title: 'ПОСНИ ПРОГРАМ',
+		items: [
+			{ name: 'Пита са кромпиром', price: '1300 РСД/ком' },
+			{ name: 'Пита са пиринчем', price: '1300 РСД/ком' },
+			{ name: 'Пита са печуркама', price: '1300 РСД/ком' },
+			{ name: 'Посне кифлице', price: '1000 РСД/ком' },
+			{ name: 'Посни мини сендвичи', price: '1700 РСД/ком' },
+			{ name: 'Тортиља туна', price: '1800 РСД/ком' },
+			{ name: 'Посна руска салата', price: '1400 РСД/ком' },
+			{ name: 'Пребранац', price: '1200 РСД/ком' },
+			{ name: 'Посна сарма (минимум 10ком)', price: '150 РСД/ком' },
 		],
 	},
 	{
 		title: 'СЛАТКИ ПРОГРАМ',
-		subtitle: '*Cheesecake',
+		subtitle: 'Чиз кејк у чаши',
 		items: [
-			{ name: 'Малина', price: '350 RSD/чаша' },
-			{ name: 'Боровница', price: '350 RSD/чаша' },
-			{ name: 'Белгијска чоколада', price: '350 RSD/чаша' },
-			{ name: 'Орео', price: '350 RSD/чаша' },
-			{ name: 'Рафаело', price: '350 RSD/чаша' },
-			{ name: 'Нутела', price: '350 RSD/чаша' },
-			{ name: 'Пистаћи', price: '400RSD/чаша' },
+			{ name: 'Малина', price: '350 РСД/чаша' },
+			{ name: 'Боровница', price: '350 РСД/чаша' },
+			{ name: 'Белгијска чоколада', price: '350 РСД/чаша' },
+			{ name: 'Орео', price: '350 РСД/чаша' },
+			{ name: 'Рафаело', price: '350 РСД/чаша' },
+			{ name: 'Нутела', price: '350 РСД/чаша' },
+			{ name: 'Пистаћи', price: '400 РСД/чаша' },
+			{ name: 'Пакет 20ком 5 укуса по жељи', price: '6000 РСД/чаша' },
 		],
-		note: 'Минимална количина 10ком, за поруџбине 20+ попуст од 10%'
+		note: 'Минимална количина 10ком (могућа комбинација укуса), за поруџбине 20+ попуст од 10%'
 	},
+	{
+		title: 'Чиз кејк торта',
+		items: [
+			{ name: 'Малина', price: '1800 РСД/чаша' },
+			{ name: 'Боровница', price: '1800 РСД/чаша' },
+			{ name: 'Белгијска чоколада', price: '1800 РСД/чаша' },
+			{ name: 'Орео', price: '1800 РСД/чаша' },
+			{ name: 'Рафаело', price: '1800 РСД/чаша' },
+			{ name: 'Нутела', price: '1800 РСД/чаша' },
+			{ name: 'Пистаћи', price: '2000 РСД/чаша' },
+		],
+		note: 'За торте испод 2кг цена износи 2200 РСД/кг. Торте могу бити округле и четвртасте, до 4кг'
+	},
+	{
+		title: 'ОСТАЛИ СЛАТКИ ПРОГРАМ',
+		items: [
+			{ name: 'Торта Маковњача', price: '1500 РСД/чаша' },
+			{ name: 'Пита бундевара', price: '1300 РСД/чаша' },
+			{ name: 'Принцес крофне- 20ком', price: '2000 РСД' },
+			{ name: 'Кифлице са џемом', price: '1000 РСД/чаша' },
+		],
+	}
 ];
 
 function MenuPage() {
@@ -112,8 +179,8 @@ function MenuPage() {
                 <div className="w-20 h-1 bg-tb-accent rounded-full mb-6 ml-0"></div>
                 {section.subtitle && <div className="text-tb-accent text-lg font-semibold mb-4 text-left">{section.subtitle}</div>}
               </div>
-              <div className="flex flex-1 items-center justify-center w-full">
-                <div className="bg-white rounded-xl shadow-md border border-tb-accent/30 p-0 mb-2 overflow-hidden w-full max-w-xl flex flex-col items-center">
+			<div className="flex flex-1 items-center justify-center w-full">
+				<div className="bg-white rounded-xl shadow-md border border-tb-accent/30 p-0 mb-2 w-full flex flex-col items-center">
                   <ul className="divide-y divide-tb-accent-light w-full">
                     {section.items.map((item) => (
                       <li key={item.name} className="flex items-center justify-between px-6 py-3 transition-colors hover:bg-tb-bg/70">

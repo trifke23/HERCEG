@@ -61,7 +61,7 @@ export default function Header({ setCurrentPage }: HeaderProps) {
     // Ensure visible on mount/top
     setShowHeader(true);
     lastScrollY.current = window.scrollY || 0;
-    return () => window.removeEventListener('scroll', handleScroll as any);
+  return () => window.removeEventListener('scroll', handleScroll as EventListener);
   }, []);
 
   const handleNavigation = (page: string, section?: string) => {
@@ -92,7 +92,7 @@ export default function Header({ setCurrentPage }: HeaderProps) {
         <div className="grid grid-cols-3 items-center py-1 md:py-2">
           {/* Left Navigation */}
           <nav className="hidden lg:flex justify-end space-x-4 xl:space-x-6">
-            {['home', 'services', 'menu', 'gallery'].map((key) => (
+              {(['home', 'services', 'menu', 'gallery'] as const).map((key) => (
               <button
                 key={key}
                 onClick={() =>
@@ -164,7 +164,7 @@ export default function Header({ setCurrentPage }: HeaderProps) {
         {isMobileMenuOpen && (
           <div className="lg:hidden bg-[#f2e5d2] border-t border-[#e0c9a0] absolute left-0 right-0 top-full shadow-xl z-50">
             <nav className="py-4 space-y-2">
-              {['home', 'services', 'menu', 'gallery', 'about', 'contact'].map((key) => (
+              {(['home', 'services', 'menu', 'gallery', 'about', 'contact'] as const).map((key) => (
                 <button
                   key={key}
                   onClick={() =>

@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
+  // Open Home by default so you see it immediately
   const [currentPage, setCurrentPage] = useState('home');
 
   // Always scroll to top when switching pages

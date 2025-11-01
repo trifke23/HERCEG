@@ -25,12 +25,12 @@ export default function Contact() {
     try {
       const form = e.currentTarget;
       const fd = new FormData(form);
-      const data: Record<string, any> = {
+      const data: Record<string, string> = {
         access_key: '3f11a0fb-1609-4e28-9bd7-9689363c0b7e',
         subject: 'Nova poruka sa sajta – Herceg Ketering',
       };
       fd.forEach((value, key) => {
-        data[key] = value;
+        data[key] = String(value);
       });
       // Helpful aliases for inbox readability
       if (data.fullName) data.from_name = data.fullName;
@@ -56,6 +56,8 @@ export default function Contact() {
         setStatus({ ok: false, msg: 'Слање није успело. Покушајте поново.' });
       }
     } catch (err) {
+      // Log the error for debugging purposes so the variable is used
+      console.error(err);
       setStatus({ ok: false, msg: 'Грешка при слању. Покушајте поново.' });
     } finally {
       setSubmitting(false);
@@ -239,8 +241,8 @@ export default function Contact() {
                     <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-tb-text text-sm sm:text-base">Радно време</h3>
-                    <p className="text-tb-text/70 text-sm sm:text-base">Понедељак–Недеља: 08:00–22:00</p>
+                    <h3 className="font-semibold text-tb-text text-sm sm:text-base">Време заказивања</h3>
+                    <p className="text-tb-text/70 text-sm sm:text-base">Препоручујемо вам да направите резервацију најмање 48 сати унапред.</p>
                   </div>
                 </div>
               </div>

@@ -3,9 +3,8 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // Set the base path to your GitHub repository name.
-  // If your repo name differs, change "/HERCEG/" accordingly.
-  base: "/HERCEG/",
+  // Use relative base so docs/index.html can be opened directly without a server
+  base: "./",
   plugins: [react()],
   optimizeDeps: {
     exclude: ['lucide-react'],
