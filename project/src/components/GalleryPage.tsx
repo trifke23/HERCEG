@@ -1,3 +1,4 @@
+import gl25 from '../assets/gl25.jpg';
 import gl9 from '../assets/gl9.jpg';
 import gl13 from '../assets/gl13.jpg';
 import gl15 from '../assets/gl15.jpg';
@@ -35,6 +36,9 @@ export default function GalleryPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           ))}
+          <div className="gallery-image">
+            <img src={gl25} alt="Galerija" className="rounded-xl w-full h-auto object-cover" />
+          </div>
         </div>
       </div>
     </section>

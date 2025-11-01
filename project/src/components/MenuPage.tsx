@@ -196,7 +196,16 @@ function MenuPage() {
             {/* Right: Image */}
             <div className="flex-1 flex items-center justify-center bg-tb-bg p-0 m-0 min-h-0">
               <div className="w-full h-full aspect-video flex items-center justify-center">
-                <img src={sectionImages[idx % sectionImages.length]} alt={section.title} className="w-full h-full object-cover rounded-r-xl rounded-l-none" />
+								<img
+									src={
+										section.title === 'СЛАВСКИ ПРОГРАМ' ? gl28 :
+										section.title === 'СЛАТКИ ПРОГРАМ' ? gl19 :
+										section.title === 'Чиз кејк торта' ? gl26 :
+										sectionImages[idx % sectionImages.length]
+									}
+									alt={section.title}
+									className="w-full h-full object-cover rounded-r-xl rounded-l-none"
+								/>
               </div>
             </div>
           </div>
