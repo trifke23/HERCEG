@@ -1,26 +1,29 @@
+export default MenuPage;
 
 import gl18 from '../assets/gl18.jpeg';
-import gl31 from '../assets/gl31.jpg';
 import gl22 from '../assets/gl22.jpg';
 import gl24 from '../assets/gl24.jpg';
-import gl21 from '../assets/gl21.jpg';
 import gl23 from '../assets/gl23.jpg';
 import gl20 from '../assets/gl20.jpg';
 import gl19 from '../assets/gl19.jpeg';
 import gl28 from '../assets/gl28.jpg';
 import gl26 from '../assets/gl26.jpg';
+import rolatImg from '../assets/rolat.jpg';
+import tortiljaImg from '../assets/tortilja.jpg';
+import meze from '../assets/meze.jpg';
 
 const sectionImages = [
 	gl18, // kiflice
-	gl31,   // rolati
+	rolatImg,   // rolati
 	gl22,   // pite
 	gl24,  // mini sendviči
-	gl21,   // tortilje
+	tortiljaImg,   // tortilje
 	gl23,  // ciz casa
 	gl20,  // ostali slani program
 	gl19,  // slatki program
 	gl28,  // slavski program
 	gl26,  // ciz torta 
+	meze, // meze
 ];
 
 const menuData = [
@@ -174,30 +177,32 @@ function MenuPage() {
 					<div key={section.title} className="relative bg-white rounded-2xl border border-tb-accent shadow-lg flex flex-col md:flex-row items-stretch overflow-hidden min-h-[340px]">
 						{/* Left: Text */}
 						<div className="flex-1 flex flex-col justify-center p-8 min-h-0">
-              <div className="w-full">
-                <h2 className="text-3xl font-extrabold tracking-widest text-tb-text uppercase leading-tight mb-1 text-left">{section.title}</h2>
-                <div className="w-20 h-1 bg-tb-accent rounded-full mb-6 ml-0"></div>
-                {section.subtitle && <div className="text-tb-accent text-lg font-semibold mb-4 text-left">{section.subtitle}</div>}
-              </div>
-			<div className="flex flex-1 items-center justify-center w-full">
-				<div className="bg-white rounded-xl shadow-md border border-tb-accent/30 p-0 mb-2 w-full flex flex-col items-center">
-                  <ul className="divide-y divide-tb-accent-light w-full">
-                    {section.items.map((item) => (
-                      <li key={item.name} className="flex items-center justify-between px-6 py-3 transition-colors hover:bg-tb-bg/70">
-                        <span className="tracking-wide text-base font-medium text-tb-text">{item.name}</span>
-                        <span className="text-tb-accent-dark text-base font-bold whitespace-nowrap">{item.price}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              {section.note && <div className="mt-2 text-xs text-tb-accent italic w-full text-left">{section.note}</div>}
-            </div>
-            {/* Right: Image */}
-            <div className="flex-1 flex items-center justify-center bg-tb-bg p-0 m-0 min-h-0">
-              <div className="w-full h-full aspect-video flex items-center justify-center">
+							<div className="w-full">
+								<h2 className="text-3xl font-extrabold tracking-widest text-tb-text uppercase leading-tight mb-1 text-left">{section.title}</h2>
+								<div className="w-20 h-1 bg-tb-accent rounded-full mb-6 ml-0"></div>
+								{section.subtitle && <div className="text-tb-accent text-lg font-semibold mb-4 text-left">{section.subtitle}</div>}
+							</div>
+							<div className="flex flex-1 items-center justify-center w-full">
+								<div className="bg-white rounded-xl shadow-md border border-tb-accent/30 p-0 mb-2 w-full flex flex-col items-center">
+									<ul className="divide-y divide-tb-accent-light w-full">
+										{section.items.map((item) => (
+											<li key={item.name} className="flex items-center justify-between px-6 py-3 transition-colors hover:bg-tb-bg/70">
+												<span className="tracking-wide text-base font-medium text-tb-text">{item.name}</span>
+												<span className="text-tb-accent-dark text-base font-bold whitespace-nowrap">{item.price}</span>
+											</li>
+										))}
+									</ul>
+								</div>
+							</div>
+							{section.note && <div className="mt-2 text-xs text-tb-accent italic w-full text-left">{section.note}</div>}
+						</div>
+						{/* Right: Image */}
+						<div className="flex-1 flex items-center justify-center bg-tb-bg p-0 m-0 min-h-0">
+							<div className="w-full h-full aspect-video flex items-center justify-center">
 								<img
 									src={
+										section.title === 'РОЛАТИ' ? rolatImg :
+										section.title === 'ТОРТИЉЕ' ? tortiljaImg :
 										section.title === 'СЛАВСКИ ПРОГРАМ' ? gl28 :
 										section.title === 'СЛАТКИ ПРОГРАМ' ? gl19 :
 										section.title === 'Чиз кејк торта' ? gl26 :
@@ -206,17 +211,16 @@ function MenuPage() {
 									alt={section.title}
 									className="w-full h-full object-cover rounded-r-xl rounded-l-none"
 								/>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="text-center text-base italic text-tb-accent mt-16 mb-10 space-y-2 px-4">
-        <p>*Сервирање у варијанти шведски сто или тацне у складу са договором</p>
-        <p>*У случају специфичних захтева могућ договор и проширење понуде</p>
-      </div>
-    </div>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+			<div className="text-center text-base italic text-tb-accent mt-16 mb-10 space-y-2 px-4">
+				<p>*Сервирање у варијанти шведски сто или тацне у складу са договором</p>
+				<p>*У случају специфичних захтева могућ договор и проширење понуде</p>
+			</div>
+		</div>
 	);
 }
 
-export default MenuPage;
