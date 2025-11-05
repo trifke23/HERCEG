@@ -11,6 +11,8 @@ import gl26 from '../assets/gl26.jpg';
 import rolatImg from '../assets/rolat.jpg';
 import tortiljaImg from '../assets/tortilja.jpg';
 import meze from '../assets/meze.jpg';
+import posni from '../assets/posni.jpg';
+import ostslatki from '../assets/ostslatki.jpg';
 
 const sectionImages = [
 	gl18, // kiflice
@@ -24,6 +26,8 @@ const sectionImages = [
 	gl28,  // slavski program
 	gl26,  // ciz torta 
 	meze, // meze
+	posni, // posni program
+	ostslatki // ostali slatki program
 ];
 
 const menuData = [
@@ -42,8 +46,8 @@ const menuData = [
 		title: 'РОЛАТИ',
 		items: [
 			{ name: 'Класични (жути)', price: '1500 РСД/кг' },
-			{ name: 'Спанаћ (зелени)', price: '1500 РСД/кг' },
-			{ name: 'Ајвар (црвени)', price: '1500 РСД/кг' },
+			{ name: 'Спанаћ (зелени)', price: '1600 РСД/кг' },
+			{ name: 'Ајвар (црвени)', price: '1600 РСД/кг' },
 		],
 	},
 	{
@@ -206,6 +210,8 @@ function MenuPage() {
 										section.title === 'СЛАВСКИ ПРОГРАМ' ? gl28 :
 										section.title === 'СЛАТКИ ПРОГРАМ' ? gl19 :
 										section.title === 'Чиз кејк торта' ? gl26 :
+										section.title === 'ПОСНИ ПРОГРАМ' ? posni :
+										section.title === 'ОСТАЛИ СЛАТКИ ПРОГРАМ' ? ostslatki :
 										sectionImages[idx % sectionImages.length]
 									}
 									alt={section.title}
