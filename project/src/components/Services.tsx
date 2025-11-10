@@ -1,45 +1,74 @@
-import { Building2, Heart, Users } from 'lucide-react';
-import poslovni from '../assets/poslovni.jpg';
-import school from '../assets/school.jpg';
-import { useLanguage } from '../contexts/LanguageContext';
-
-// Dodajemo prop za promenu stranice
 import React from 'react';
+import { Baby, Church, PartyPopper } from 'lucide-react';
+import kidsbd from '../assets/kidsbd.jpg';
+import slave from '../assets/slave.jpg';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface ServicesProps {
   setCurrentPage: (page: string) => void;
 }
 
 const Services: React.FC<ServicesProps> = ({ setCurrentPage }) => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
 
-  const services = [
+  const srServices = [
     {
-      icon: Building2,
-      title: t('corporateTitle'),
-      description: t('corporateDesc'),
-      image: poslovni
+      icon: Baby,
+      title: 'Дечији кетеринг',
+      description:
+        'Шарене залије и креативни залогаји претварају дечију прославу у представу за сва чула.',
+      image: kidsbd
     },
     {
-      icon: Heart,
-      title: 'Кетеринг за прославе',
-      description: t('weddingDesc'),
-      image: 'https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+      icon: Church,
+      title: 'Кетеринг за славу',
+      description:
+        'Традиционални укуси, отмена декорација и избор мрсних или посних пакета гарантују славску трпезу о којој гости причају.',
+      image: slave
     },
     {
-      icon: Users,
-      title: 'Дечија школа кувања',
-  description: 'Креативне радионице где деца уз игру и забаву уче да припремају укусна јела и уживају у својим кулинарским делима.',
-      image: school
+      icon: PartyPopper,
+      title: 'Кетеринг за прославе и догађаје',
+      description:
+        'Елегантни канапеи и персонализовани менији претварају сваки догађај у незаборавну причу.',
+      image:
+        'https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
     }
   ];
+
+  const ruServices = [
+    {
+      icon: Baby,
+      title: 'Детский кейтеринг',
+      description:
+        'Яркие блюда и веселая подача превращают детский праздник в гастрономическое приключение.',
+      image: kidsbd
+    },
+    {
+      icon: Church,
+      title: 'Кейтеринг для славы',
+      description:
+        'Домашние рецепты, тонкая сервировка и выбор постных или скоромных пакетов создают атмосферу семейного торжества.',
+      image: slave
+    },
+    {
+      icon: PartyPopper,
+      title: 'Кейтеринг для праздников и событий',
+      description:
+        'Авторские канапе и продуманное меню делают любое событие вкусным и запоминающимся.',
+      image:
+        'https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+    }
+  ];
+
+  const services = language === 'ru' ? ruServices : srServices;
 
   return (
   <section id="services" className="py-20 bg-tb-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-tb-text mb-4">
-            {t('servicesTitle')}
+            {language === 'ru' ? 'Пакет услуг' : 'Пакет услуге'}
           </h2>
           <div className="w-24 h-1 bg-tb-accent mx-auto"></div>
         </div>
@@ -78,7 +107,7 @@ const Services: React.FC<ServicesProps> = ({ setCurrentPage }) => {
             onClick={() => setCurrentPage('services')}
             className="inline-flex items-center space-x-2 bg-[#c09a6c] hover:bg-[#a07c4c] text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-xl"
           >
-            <span>Све услуге</span>
+            <span>{language === 'ru' ? 'Подробнее о пакетах' : 'Детаљније о пакетима'}</span>
             {/* Ikonica kao u Hero sekciji */}
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" /></svg>
           </button>

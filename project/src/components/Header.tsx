@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import herceg_logo from '../assets/herceg_logo.png';
 
@@ -9,7 +9,7 @@ interface HeaderProps {
 }
 
 export default function Header({ setCurrentPage }: HeaderProps) {
-  const { language, setLanguage, t } = useLanguage();
+  useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   // Hide header on scroll down, show on scroll up
@@ -92,20 +92,25 @@ export default function Header({ setCurrentPage }: HeaderProps) {
         <div className="grid grid-cols-3 items-center py-1 md:py-2">
           {/* Left Navigation */}
           <nav className="hidden lg:flex justify-end space-x-4 xl:space-x-6">
-              {(['home', 'services', 'menu', 'gallery'] as const).map((key) => (
-              <button
-                key={key}
-                onClick={() =>
-                  key === 'gallery'
-                    ? setCurrentPage('gallery')
-                    : handleNavigation(key)
-                }
-                className="transition-all duration-200 font-semibold text-base xl:text-lg text-[#5a4a36] hover:underline hover:underline-offset-4 px-3 py-1.5 xl:px-4 xl:py-2 rounded-md bg-transparent focus:outline-none"
-                style={{ letterSpacing: '0.04em' }}
-              >
-                {t(key)}
-              </button>
-            ))}
+              {[
+                { key: 'home', label: 'Почетна' },
+                { key: 'services', label: 'Услуге' },
+                { key: 'menu', label: 'Мени' },
+                { key: 'gallery', label: 'Галерија' }
+              ].map(({ key, label }) => (
+                <button
+                  key={key}
+                  onClick={() =>
+                    key === 'gallery'
+                      ? setCurrentPage('gallery')
+                      : handleNavigation(key)
+                  }
+                  className="transition-all duration-200 font-semibold text-base xl:text-lg text-[#5a4a36] hover:underline hover:underline-offset-4 px-3 py-1.5 xl:px-4 xl:py-2 rounded-md bg-transparent focus:outline-none"
+                  style={{ letterSpacing: '0.04em' }}
+                >
+                  {label}
+                </button>
+              ))}
           </nav>
 
           {/* Logo Centered */}
@@ -128,17 +133,17 @@ export default function Header({ setCurrentPage }: HeaderProps) {
                 className="transition-all duration-200 font-semibold text-base xl:text-lg text-[#5a4a36] hover:underline hover:underline-offset-4 px-3 py-1.5 xl:px-4 xl:py-2 rounded-md bg-transparent focus:outline-none"
                 style={{ letterSpacing: '0.04em' }}
               >
-                {t('about')}
+                О нама
               </button>
               <button
                 onClick={() => handleNavigation('home', 'contact')}
                 className="transition-all duration-200 font-semibold text-base xl:text-lg text-[#5a4a36] hover:underline hover:underline-offset-4 px-3 py-1.5 xl:px-4 xl:py-2 rounded-md bg-transparent focus:outline-none"
                 style={{ letterSpacing: '0.04em' }}
               >
-                {t('contact')}
+                Контакт
               </button>
             </nav>
-            {/* Language Switcher */}
+            {/* Language Switcher - hidden
             <div className="flex items-center space-x-2 bg-[#e6d3b3] rounded px-2 py-1 shadow-sm border border-[#c09a6c]/30">
               <Globe className="w-5 h-5 text-[#c09a6c]" />
               <select
@@ -150,6 +155,7 @@ export default function Header({ setCurrentPage }: HeaderProps) {
                 <option value="ru">РУ</option>
               </select>
             </div>
+            */}
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -179,7 +185,13 @@ export default function Header({ setCurrentPage }: HeaderProps) {
                   className="block w-full text-left px-6 py-3 text-xl text-[#6a5f58] font-semibold hover:text-[#c09a6c] hover:bg-[#e6d3b3]/60 transition-all duration-200 rounded-lg"
                   style={{ letterSpacing: '0.04em' }}
                 >
-                  {t(key)}
+                  {key === 'home' ? 'Почетна'
+                    : key === 'services' ? 'Услуге'
+                    : key === 'menu' ? 'Мени'
+                    : key === 'gallery' ? 'Галерија'
+                    : key === 'about' ? 'О нама'
+                    : key === 'contact' ? 'Контакт'
+                    : key}
                 </button>
               ))}
             </nav>

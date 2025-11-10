@@ -1,5 +1,3 @@
-export default MenuPage;
-
 import gl18 from '../assets/gl18.jpeg';
 import gl22 from '../assets/gl22.jpg';
 import gl24 from '../assets/gl24.jpg';
@@ -13,6 +11,19 @@ import tortiljaImg from '../assets/tortilja.jpg';
 import meze from '../assets/meze.jpg';
 import posni from '../assets/posni.jpg';
 import ostslatki from '../assets/ostslatki.jpg';
+import salata from '../assets/salata.jpg';
+
+type MenuItem = {
+	name: string;
+	price: string;
+};
+
+type MenuSection = {
+	title: string;
+	items: MenuItem[];
+	note?: string;
+	subtitle?: string;
+};
 
 const sectionImages = [
 	gl18, // kiflice
@@ -27,10 +38,26 @@ const sectionImages = [
 	gl26,  // ciz torta 
 	meze, // meze
 	posni, // posni program
-	ostslatki // ostali slatki program
+	ostslatki, // ostali slatki program
+	salata // salata
 ];
 
-const menuData = [
+	const imageByTitle: Record<string, string> = {
+		'КИФЛИЦЕ': gl18,
+		'РОЛАТИ': rolatImg,
+		'ПИТЕ': gl22,
+		'МИНИ СЕНДВИЧИ': gl24,
+		'ТОРТИЉЕ': tortiljaImg,
+		'САЛАТЕ': salata,
+		'ОСТАЛИ СЛАНИ ПРОГРАМ': gl20,
+		'СЛАВСКИ ПРОГРАМ': gl28,
+		'ПОСНИ ПРОГРАМ': posni,
+		'Чиз кејк у чаши': gl23,
+		'Чиз кејк торта': gl26,
+		'ОСТАЛИ СЛАТКИ ПРОГРАМ': ostslatki,
+	};
+
+	const menuData: MenuSection[] = [
 	{
 		title: 'КИФЛИЦЕ',
 		items: [
@@ -128,40 +155,39 @@ const menuData = [
 		],
 	},
 	{
-		title: 'СЛАТКИ ПРОГРАМ',
-		subtitle: 'Чиз кејк у чаши',
+		title: 'Чиз кејк у чаши',
 		items: [
-			{ name: 'Малина', price: '350 РСД/чаша' },
-			{ name: 'Боровница', price: '350 РСД/чаша' },
-			{ name: 'Белгијска чоколада', price: '350 РСД/чаша' },
-			{ name: 'Орео', price: '350 РСД/чаша' },
-			{ name: 'Рафаело', price: '350 РСД/чаша' },
-			{ name: 'Нутела', price: '350 РСД/чаша' },
-			{ name: 'Пистаћи', price: '400 РСД/чаша' },
-			{ name: 'Пакет 20ком 5 укуса по жељи', price: '6000 РСД/чаша' },
+			{ name: 'Малина', price: '350 РСД' },
+			{ name: 'Боровница', price: '350 РСД' },
+			{ name: 'Белгијска чоколада', price: '350 РСД' },
+			{ name: 'Орео', price: '350 РСД' },
+			{ name: 'Рафаело', price: '350 РСД' },
+			{ name: 'Нутела', price: '350 РСД' },
+			{ name: 'Пистаћи', price: '400 РСД' },
+			{ name: 'Пакет 20ком 5 укуса по жељи', price: '6000 РСД' },
 		],
 		note: 'Минимална количина 10ком (могућа комбинација укуса), за поруџбине 20+ попуст од 10%'
 	},
 	{
 		title: 'Чиз кејк торта',
 		items: [
-			{ name: 'Малина', price: '1800 РСД/чаша' },
-			{ name: 'Боровница', price: '1800 РСД/чаша' },
-			{ name: 'Белгијска чоколада', price: '1800 РСД/чаша' },
-			{ name: 'Орео', price: '1800 РСД/чаша' },
-			{ name: 'Рафаело', price: '1800 РСД/чаша' },
-			{ name: 'Нутела', price: '1800 РСД/чаша' },
-			{ name: 'Пистаћи', price: '2000 РСД/чаша' },
+			{ name: 'Малина', price: '1800 РСД' },
+			{ name: 'Боровница', price: '1800 РСД' },
+			{ name: 'Белгијска чоколада', price: '1800 РСД' },
+			{ name: 'Орео', price: '1800 РСД' },
+			{ name: 'Рафаело', price: '1800 РСД' },
+			{ name: 'Нутела', price: '1800 РСД' },
+			{ name: 'Пистаћи', price: '2000 РСД' },
 		],
 		note: 'За торте испод 2кг цена износи 2200 РСД/кг. Торте могу бити округле и четвртасте, до 4кг'
 	},
 	{
 		title: 'ОСТАЛИ СЛАТКИ ПРОГРАМ',
 		items: [
-			{ name: 'Торта Маковњача', price: '1500 РСД/чаша' },
-			{ name: 'Пита бундевара', price: '1300 РСД/чаша' },
+			{ name: 'Торта Маковњача', price: '1500 РСД' },
+			{ name: 'Пита бундевара', price: '1300 РСД' },
 			{ name: 'Принцес крофне- 20ком', price: '2000 РСД' },
-			{ name: 'Кифлице са џемом', price: '1000 РСД/чаша' },
+			{ name: 'Кифлице са џемом', price: '1000 РСД' },
 		],
 	}
 ];
@@ -204,16 +230,7 @@ function MenuPage() {
 						<div className="flex-1 flex items-center justify-center bg-tb-bg p-0 m-0 min-h-0">
 							<div className="w-full h-full aspect-video flex items-center justify-center">
 								<img
-									src={
-										section.title === 'РОЛАТИ' ? rolatImg :
-										section.title === 'ТОРТИЉЕ' ? tortiljaImg :
-										section.title === 'СЛАВСКИ ПРОГРАМ' ? gl28 :
-										section.title === 'СЛАТКИ ПРОГРАМ' ? gl19 :
-										section.title === 'Чиз кејк торта' ? gl26 :
-										section.title === 'ПОСНИ ПРОГРАМ' ? posni :
-										section.title === 'ОСТАЛИ СЛАТКИ ПРОГРАМ' ? ostslatki :
-										sectionImages[idx % sectionImages.length]
-									}
+									src={imageByTitle[section.title] ?? sectionImages[idx % sectionImages.length]}
 									alt={section.title}
 									className="w-full h-full object-cover rounded-r-xl rounded-l-none"
 								/>
@@ -229,4 +246,6 @@ function MenuPage() {
 		</div>
 	);
 }
+
+export default MenuPage;
 
