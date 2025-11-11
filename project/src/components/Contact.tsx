@@ -147,8 +147,8 @@ export default function Contact() {
                 <option value="Рођендан">Рођендан</option>
                 <option value="Пословни догађај">Пословни догађај</option>
                 <option value="Свечаност">Свечаност</option>
-                <option value="Породична прослава">Породична прослава</option>
-                <option value="Wine & Cheese">Wine & Cheese</option>
+                <option value="Посна слава">Посна слава</option>
+                <option value="Мрсна слава">Мрсна слава</option>
                 <option value="Остало">Остало</option>
               </select>
 
