@@ -14,9 +14,13 @@ import gl10 from '../assets/gl10.jpeg';
 import gl11 from '../assets/gl11.jpeg';
 import gl12 from '../assets/gl12.jpeg';
 import gl14 from '../assets/gl14.png';
+import gl32 from '../assets/gl32.jpg';
+import gl33 from '../assets/gl33.jpg';
+import gl34 from '../assets/gl34.jpg';
+import gl35 from '../assets/gl35.jpg';
 
 const images = [
-  gl1, gl2, gl3, gl4, gl5, gl6, gl7, gl8, gl9, gl10, gl11, gl12, gl13, gl14, gl15
+  gl1, gl2, gl3, gl4, gl5, gl6, gl7, gl8, gl9, gl10, gl11, gl12, gl13, gl14, gl15, gl25, gl32, gl33, gl34, gl35
 ];
 
 export default function GalleryPage() {
@@ -36,9 +40,6 @@ export default function GalleryPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           ))}
-          <div className="gallery-image">
-            <img src={gl25} alt="Galerija" className="rounded-xl w-full h-auto object-cover" />
-          </div>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { Instagram } from 'lucide-react';
+import { Facebook, Instagram } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import hercegLogo from '../assets/herceg_logo.png';
 
@@ -44,8 +44,21 @@ export default function Footer({ setCurrentPage }: { setCurrentPage: (page: stri
           <div className="text-center">
             <h4 className="text-lg font-semibold mb-4 text-tb-accent">Пратите нас</h4>
             <div className="flex justify-center space-x-4">
-              <a href="https://www.instagram.com/herceg_ketering_ns?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="bg-tb-accent/20 p-3 rounded-full hover:bg-tb-accent transition-all duration-300 group">
+              <a
+                href="https://www.instagram.com/herceg_ketering_ns?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-tb-accent/20 p-3 rounded-full hover:bg-tb-accent transition-all duration-300 group"
+              >
                 <Instagram className="w-5 h-5 text-tb-accent group-hover:text-white" />
+              </a>
+              <a
+                href="https://facebook.com/share/1E3iaiJtPV/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-tb-accent/20 p-3 rounded-full hover:bg-tb-accent transition-all duration-300 group"
+              >
+                <Facebook className="w-5 h-5 text-tb-accent group-hover:text-white" />
               </a>
             </div>
           </div>
